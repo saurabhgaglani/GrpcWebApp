@@ -1,0 +1,4 @@
+grpcio
+googleapis-common-protos
+protobuf==3.20.*
+

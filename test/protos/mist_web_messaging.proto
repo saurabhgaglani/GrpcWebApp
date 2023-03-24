@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+// The greeting service definition.
+service MistWebMessaging {
+  // Sends a greeting
+  rpc CreateUser (UserRequest) returns (UserReply) {}
+}
+
+// The request message containing the user's name.
+message UserRequest {
+  string name = 1;
+  string password = 2;
+}
+
+// The response message containing the greetings
+message UserReply {
+  string message = 1;
+}

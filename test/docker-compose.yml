@@ -1,0 +1,24 @@
+version: '3'
+services: 
+  mist_web_service: 
+    build: 
+      context: ./mistWebService
+      dockerfile: WebServer.Dockerfile 
+    ports: 
+      - "50055:50055"
+
+  mist_server_service: 
+    build: 
+      context: ./mistServerService 
+      dockerfile: Server.Dockerfile 
+    ports:  
+      - "50051:50051"
+  
+  mist_client_service: 
+    build: 
+      context: ./mistClientService
+      dockerfile: Client.Dockerfile
+    depends_on: 
+      - "mist_server_service"
+      - "mist_web_service"
+    command: ["./wait-for-it.sh", "mist_web_service:50055", "--", "python3", "greeter_client.py"]

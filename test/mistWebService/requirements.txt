@@ -1,0 +1,5 @@
+grpcio
+googleapis-common-protos
+protobuf==3.20.*
+flask
+flask-wtf
